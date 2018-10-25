@@ -48,8 +48,11 @@ td:last-child{
 }
 .scoreboard-table
 {
-    background-color:#4C4B4B;
-    color:#EFEFEF;
+    
+}
+.scoreboard-table tr:first-child{
+    background-color:#212121 ;
+    color:#E5E5E5;
 }
 .thead{
     background-color:white;
