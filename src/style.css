@@ -26,6 +26,10 @@ h1{
 }
 table{
     border:1px solid black;
+    
+}
+thead, th,tr{
+    text-align: center;
 }
 tr{
     border-bottom: 2px solid #D1D1D1;
@@ -41,4 +45,9 @@ td{
 td:last-child{
     border:none;
 }
-
+.scoreboard-table
+{
+    background-color:#282828;
+    text-align: center;
+    color:#EFEFEF;
+}

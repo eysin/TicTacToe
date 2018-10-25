@@ -63,7 +63,6 @@ class Players extends React.Component{
         <div>
             <div class="player">Player1 VS Player2</div>
         </div>
-        
         );
     }
 }
@@ -72,9 +71,32 @@ class ScoreBoard extends React.Component{
     render(){
         return(
         <div>
-            <div class="player">Scoreboard:</div>
+            <table class="table scoreboard-table">
+                <thead>
+                    <tr>ScoreBoard</tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>Wins</td>
+                        <td>Losses</td>
+                        <td>Draws</td>
+                    </tr>
+                    <tr>
+                        <td>Player1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Player2</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        
         );
     }
 }
