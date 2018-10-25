@@ -21,3 +21,9 @@ it('should return 1 on (x x x) in first column', () => {
 it('should return 2 on (o o o) in last column', () => {
     expect(winCheck([[1, 2, 2], [0, 2, 2], [1, 0, 2]])).toBe(2);
 })
+it('should return 1 on (x x x) in diagonal', () => {
+    expect(winCheck([[1, 0, 0], [0, 1, 0], [0, 0, 1]])).toBe(1);
+})
+it('should return 2 on (o o o) in other diagonal', () => {
+    expect(winCheck([[0, 0, 2], [0, 2, 0], [2, 0, 0]])).toBe(2);
+})
