@@ -1,14 +1,21 @@
 import React from 'react';
 
 
-export class PlayField extends React.Component{
+export class PlayField extends React.Component{//The container class for the main display of the website
     render(){
-        return <h1>This works</h1>
+        return (
+        <div className="col-md-12">
+            <TicTacToe />
+        </div>);
     }
 }
 
-class TicTacToe extends React.Component{
+class TicTacToe extends React.Component{//The container class for the Tic-Tac-Toe game itself
     render(){
-        return (<h1>TicTactoe works</h1>);
+        return (
+        <div>
+            <h1>TicTactoe works</h1>)
+        </div>
+        );
     }
 }
