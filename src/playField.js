@@ -4,8 +4,17 @@ import React from 'react';
 export class PlayField extends React.Component{//The container class for the main display of the website
     render(){
         return (
-        <div className="col-md-12">
-            <TicTacToe />
+        <div class="container">
+            <div class="title">Tic Tac Toe</div>
+            <div className="division col-md-12 col-sm-6">
+                <Players />
+            </div>
+            <div className="division col-md-12 col-sm-6">
+                <TicTacToe />
+            </div>
+            <div className="division col-md-12 col-sm-6">
+                <ScoreBoard />
+            </div>
         </div>);
     }
 }
@@ -22,13 +31,13 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     render(){//A table that will be stiled will handle the graphics part of the tic-tac-toe
         return (
         <div>
-            <table className="col-md-12">
+            <table class=" col-md-12">
                 <tbody>
                     {this.state.playField.map((row, i1)=> 
                     <tr>
                         {row.map((element, i2)=>
                             <td onClick={() => this.handleClick(i1, i2)}>
-                                {element === 0 ? <h1>BLANK</h1> : null}
+                                {element === 0 ? <h1>empty</h1> : null}
                                 {element === 1 ? <h1>X</h1> : null}
                                 {element === 2 ? <h1>O</h1> : null}
                             </td>
@@ -48,8 +57,24 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
 
 }
 
+class Players extends React.Component{
+    render(){
+        return(
+        <div>
+            <div class="player">Player1 VS Player2</div>
+        </div>
+        
+        );
+    }
+}
+
 class ScoreBoard extends React.Component{
     render(){
-        return <h1>Connection works</h1>
+        return(
+        <div>
+            <div class="player">Scoreboard:</div>
+        </div>
+        
+        );
     }
 }
