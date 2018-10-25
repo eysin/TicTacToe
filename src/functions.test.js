@@ -15,3 +15,9 @@ it('should return 2 on (o o o) in mid row', () => {
 it('should return 1 on (x x x) in bottom row', () => {
     expect(winCheck([[0, 2, 1], [2, 2, 0], [1, 1, 1]])).toBe(1);
 })
+it('should return 1 on (x x x) in first column', () => {
+    expect(winCheck([[1, 2, 1], [1, 2, 0], [1, 0, 1]])).toBe(1);
+})
+it('should return 2 on (o o o) in last column', () => {
+    expect(winCheck([[1, 2, 2], [0, 2, 2], [1, 0, 2]])).toBe(2);
+})

@@ -8,6 +8,11 @@ function winCheck(grid)
             return 1;
         if(grid[i][0] == 2 && grid[i][1] == 2 && grid[i][2] == 2)
             return 2;
+        //vertical check
+        if(grid[0][i] == 1 && grid[1][i] == 1 && grid[2][i] == 1)
+            return 1;
+        if(grid[0][i] == 2 && grid[1][i] == 2 && grid[2][i] == 2)
+            return 2;
     }
     return 0;
 } 
