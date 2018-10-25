@@ -17,6 +17,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
             playField: [[0, 1, 0], [0, 1, 0], [0, 2, 0]],
             turn: true
         }
+        this.handleClick = this.handleClick.bind(this);
     }
     render(){//A table that will be stiled will handle the graphics part of the tic-tac-toe
         return (
@@ -45,5 +46,10 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         alert(this.state.playField[index1][index2])
     }
 
+}
 
+class ScoreBoard extends React.Component{
+    render(){
+        return <h1>Connection works</h1>
+    }
 }
