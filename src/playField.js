@@ -61,13 +61,14 @@ class Players extends React.Component{
     render(){
         return(
         <div>
-            <div class="player">Player1 VS Player2</div>
+            <div class="player blue">Player1 VS Player2</div>
+            <div class="turn green">Player X's Turn!</div>
         </div>
         );
     }
 }
 
-class ScoreBoard extends React.Component{
+class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
     render(){
         return(
         <div>
@@ -80,13 +81,13 @@ class ScoreBoard extends React.Component{
                         <td>Losses</td>
                         <td>Draws</td>
                     </tr>
-                    <tr>
+                    <tr class="blue">
                         <td>Player1</td>
                         <td>2</td>
                         <td>3</td>
                         <td>3</td>
                     </tr>
-                    <tr>
+                    <tr class="green">
                         <td>Player2</td>
                         <td>3</td>
                         <td>2</td>

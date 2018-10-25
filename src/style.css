@@ -3,6 +3,7 @@ body{
     padding-top:50px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color:#494949;
+    text-align: center;
 }
 .container{
     margin: auto;
@@ -13,20 +14,20 @@ body{
     margin-bottom:30px;
 }
 .title{
-    font-size:30px;
-    text-align: center;
+    font-size:36px;
 }
-.player{
-    width:100%;
-    text-align: center;
+.blue{
+    background-color:#B3DEE8;
 }
+.green{
+   background-color:#B3E8D1;
+}
+
 h1{  
     font-size:22px;
-    text-align: center;
 }
 table{
     border:1px solid black;
-    text-align: center;
 }
 tr{
     border-bottom: 2px solid #D1D1D1;
