@@ -2,8 +2,10 @@
 //else returns 0
 function winCheck(grid)
 {
+    //loop to check for player 1 and 2 in all checks
     for(var j = 1; j < 3;j++)
     {
+        //loop to check all 3 rows and columns
         for(var i = 0; i < 3;i++)
         {
             //horizontal check
