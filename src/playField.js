@@ -71,10 +71,8 @@ class ScoreBoard extends React.Component{
     render(){
         return(
         <div>
+            <h1>Scoreboard:</h1>
             <table class="table scoreboard-table">
-                <thead>
-                    <tr>ScoreBoard</tr>
-                </thead>
                 <tbody>
                     <tr>
                         <td>Name</td>

@@ -26,6 +26,7 @@ h1{
 }
 table{
     border:1px solid black;
+    text-align: center;
     
 }
 thead, th,tr{
@@ -47,7 +48,9 @@ td:last-child{
 }
 .scoreboard-table
 {
-    background-color:#282828;
-    text-align: center;
+    background-color:#4C4B4B;
     color:#EFEFEF;
+}
+.thead{
+    background-color:white;
 }
