@@ -11,11 +11,26 @@ export class PlayField extends React.Component{//The container class for the mai
 }
 
 class TicTacToe extends React.Component{//The container class for the Tic-Tac-Toe game itself
+    constructor(props){
+        super(props);
+        this.state = {
+            playField: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        }
+    }
+
     render(){
         return (
         <div>
-            <h1>TicTactoe works</h1>)
+            {this.state.playField.map((row, i1)=> 
+            <div className="col-md-12">
+                    {row.map((element, i2)=>
+                        <hi>Hi</hi>    
+                    )}
+            </div>
+            )}
+            
         </div>
         );
     }
+
 }
