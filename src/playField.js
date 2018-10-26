@@ -47,7 +47,7 @@ export class PlayField extends React.Component{//The container class for the mai
         }else{
             this.setState({score2: this.state.score2 + 1});
         }
-        
+        var tds = document.getElementsByTagName("ResetBtn");
 
     }
 }
