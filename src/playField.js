@@ -1,29 +1,41 @@
 import React from 'react';
 
+let turn = true;
 
 export class PlayField extends React.Component{//The container class for the main display of the website
     constructor(props){
         super(props);
-        this.state = {player1: "TempName1",
+        this.state = {turn: true,
+                      player1: "TempName1",
                       player2: "TempName2",
                       score1: 0,
                       score2: 0,
                       draws: 0};
+        this.finishGame = this.finishGame.bind(this);
+        this.changeTurn = this.changeTurn.bind(this);
+        
     }
+    
     render(){
         return (
         <div class="container">
             <div class="title">Tic Tac Toe</div>
             <div className="division col-md-12 col-sm-6">
-                <Players />
+                <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
-                <TicTacToe />
+                <TicTacToe finishGame={() => this.finishGame()} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
                 <ScoreBoard player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
             </div>
         </div>);
+    }
+    changeTurn(){
+        this.setState({turn: !this.state.turn});
+    }
+    finishGame(){
+
     }
 }
 
@@ -43,9 +55,9 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
             <table class=" col-md-12">
                 <tbody>
                     {this.state.playField.map((row, i1)=> 
-                    <tr>
+                    <tr key={i1}>
                         {row.map((element, i2)=>
-                            <td onClick={() => this.handleClick(i1, i2)}>
+                            <td onClick={() => this.handleClick(i1, i2)} key={i1.toString() + i2.toString()}>
                                 {element === 0 ? <h1></h1> : null}
                                 {element === 1 ? <h1>X</h1> : null}
                                 {element === 2 ? <h1>O</h1> : null}
@@ -64,13 +76,14 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         //alert(this.state.playField[index1][index2])
         if(this.state.playField[index1][index2] === 0){
             let tempField = this.state.playField;
-            if(this.state.turn){
+            if(this.props.turn){
                 this.state.playField[index1][index2] = 1;
             }
             else{
                 this.state.playField[index1][index2] = 2;
             }
-            this.setState({playField: tempField, turn: !this.state.turn});
+            this.setState({playField: tempField});
+            this.props.changeTurn();
             this.checkWin();
         }
         
@@ -79,9 +92,6 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         let tempGrid = this.state.playField;
         //The tempGrid is equals to the playField's [3][3] grid 
 
-        if(win){
-
-        }
     }
 
 }
@@ -90,8 +100,9 @@ class Players extends React.Component{
     render(){
         return(
         <div>
-            <div class="player blue">Player1 VS Player2</div>
-            <div class="turn green">Player X's Turn!</div>
+            <div class="player blue">{this.props.player1} VS {this.props.player2}</div>
+            {this.props.turn === true ? <div class="turn green"> {this.props.player1}'s Turn!</div> : 
+                                        <div class="turn green"> {this.props.player2}'s Turn!</div>}
         </div>
         );
     }
@@ -113,15 +124,15 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
                     </tr>
                     <tr class="blue">
                         <td>{this.props.player1}</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>3</td>
+                        <td>{this.props.score1}</td>
+                        <td>{this.props.score2}</td>
+                        <td>{this.props.draw}</td>
                     </tr>
                     <tr class="green">
                         <td>{this.props.player2}</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>3</td>
+                        <td>{this.props.score2}</td>
+                        <td>{this.props.score1}</td>
+                        <td>{this.props.draw}</td>
                     </tr>
                 </tbody>
             </table>
