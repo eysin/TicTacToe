@@ -2,6 +2,14 @@ import React from 'react';
 
 
 export class PlayField extends React.Component{//The container class for the main display of the website
+    constructor(props){
+        super(props);
+        this.state = {player1: "TempName1",
+                      player2: "TempName2",
+                      score1: 0,
+                      score2: 0,
+                      draws: 0};
+    }
     render(){
         return (
         <div class="container">
@@ -13,7 +21,7 @@ export class PlayField extends React.Component{//The container class for the mai
                 <TicTacToe />
             </div>
             <div className="division col-md-12 col-sm-6">
-                <ScoreBoard />
+                <ScoreBoard player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
             </div>
         </div>);
     }
@@ -23,21 +31,22 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     constructor(props){
         super(props);
         this.state = {
-            playField: [[0, 1, 0], [0, 1, 0], [0, 2, 0]],
+            playField: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
             turn: true
         }
         this.handleClick = this.handleClick.bind(this);
+        this.checkWin = this.checkWin.bind(this);
     }
     render(){//A table that will be stiled will handle the graphics part of the tic-tac-toe
         return (
         <div>
-            <table class=" col-md-12">
+            <table class="playfield col-md-12">
                 <tbody>
                     {this.state.playField.map((row, i1)=> 
                     <tr>
                         {row.map((element, i2)=>
                             <td onClick={() => this.handleClick(i1, i2)}>
-                                {element === 0 ? <h1>empty</h1> : null}
+                                {element === 0 ? <h1></h1> : null}
                                 {element === 1 ? <h1>X</h1> : null}
                                 {element === 2 ? <h1>O</h1> : null}
                             </td>    
@@ -52,7 +61,27 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     handleClick(index1, index2){//Handles operation when an element in the table is clicked
         //To fetch the global variables in the state function, use this.state.{Name of variable}
         //To update a variable in the state function, use this.setstate({"Variable": "Value"})
-        alert(this.state.playField[index1][index2])   
+        //alert(this.state.playField[index1][index2])
+        if(this.state.playField[index1][index2] === 0){
+            let tempField = this.state.playField;
+            if(this.state.turn){
+                this.state.playField[index1][index2] = 1;
+            }
+            else{
+                this.state.playField[index1][index2] = 2;
+            }
+            this.setState({playField: tempField, turn: !this.state.turn});
+            this.checkWin();
+        }
+        
+    }
+    checkWin(){
+        let tempGrid = this.state.playField;
+        //The tempGrid is equals to the playField's [3][3] grid 
+
+        /*if(win){
+
+        }*/
     }
 
 }
@@ -83,13 +112,13 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
                         <td>Draws</td>
                     </tr>
                     <tr class="blue">
-                        <td>Player1</td>
+                        <td>{this.props.player1}</td>
                         <td>2</td>
                         <td>3</td>
                         <td>3</td>
                     </tr>
                     <tr class="green">
-                        <td>Player2</td>
+                        <td>{this.props.player2}</td>
                         <td>3</td>
                         <td>2</td>
                         <td>3</td>

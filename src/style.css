@@ -35,6 +35,9 @@ tr{
 tr:last-child{
     border:none;
 }
+.playfield td{
+    height:80px;
+}
 td{
     border-right: 2px solid #D1D1D1;
     padding:10px;
