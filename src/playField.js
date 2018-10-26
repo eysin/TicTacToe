@@ -1,4 +1,5 @@
 import React from 'react';
+const winCheck = require('./functions');
 
 let turn = true;
 
@@ -91,13 +92,20 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     checkWin(){
         let tempGrid = this.state.playField;
         //The tempGrid is equals to the playField's [3][3] grid 
-
-<<<<<<< HEAD
-=======
-        /*if(win){
-
-        }*/
->>>>>>> 32a4f6eed1e913dd3309ee59c7a9ade1c35de176
+        var winner = winCheck(tempGrid); 
+        if(winner != 0)
+        {
+            if(winner === 1)
+            {
+                alert("X WINS!");
+            }    
+            else
+            {
+                alert("O WINS!");
+            }
+               
+        }
+            
     }
 
 }
