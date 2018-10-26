@@ -1,4 +1,5 @@
 import React from 'react';
+const winCheck = require('./functions');
 
 let turn = true;
 
@@ -10,7 +11,8 @@ export class PlayField extends React.Component{//The container class for the mai
                       player2: "TempName2",
                       score1: 0,
                       score2: 0,
-                      draws: 0};
+                      draws: 0,
+                      winner: 0};
         this.finishGame = this.finishGame.bind(this);
         this.changeTurn = this.changeTurn.bind(this);
         
@@ -24,7 +26,7 @@ export class PlayField extends React.Component{//The container class for the mai
                 <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
-                <TicTacToe finishGame={() => this.finishGame()} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
+                <TicTacToe finishGame={()=> this.finishGame()} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
                 <ScoreBoard player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
@@ -34,7 +36,18 @@ export class PlayField extends React.Component{//The container class for the mai
     changeTurn(){
         this.setState({turn: !this.state.turn});
     }
-    finishGame(){
+    finishGame(winner){
+        if(winner == 0)
+        {
+            this.setState({draws: this.state.draws + 1});
+        }
+        if(winner == 1)
+        {
+            this.setState({score1: this.state.score1 + 1});
+        }else{
+            this.setState({score2: this.state.score2 + 1});
+        }
+        
 
     }
 }
@@ -44,7 +57,10 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         super(props);
         this.state = {
             playField: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
-            turn: true
+            turn: true,
+            gameOver : false,
+            turnCount : 0
+
         }
         this.handleClick = this.handleClick.bind(this);
         this.checkWin = this.checkWin.bind(this);
@@ -82,18 +98,27 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
             else{
                 this.state.playField[index1][index2] = 2;
             }
-            this.setState({playField: tempField});
+            this.setState({playField: tempField, turnCount: this.state.turnCount+1});
             this.props.changeTurn();
             this.checkWin();
-        }
+            //alert(this.state.turnCount);
+        }   
         
     }
     checkWin(){
         let tempGrid = this.state.playField;
         //The tempGrid is equals to the playField's [3][3] grid 
-
+        var winner = winCheck(tempGrid); 
+        
+        if(winner != 0)
+        {   
+            this.props.finishGame(winner);
+        }
+        if(this.state.turnCount == 8)
+        {
+            this.props.finishGame(winner); //0 implies a draw
+        }
     }
-
 }
 
 class Players extends React.Component{
