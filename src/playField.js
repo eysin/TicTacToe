@@ -126,13 +126,13 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
                         <td>{this.props.player1}</td>
                         <td>{this.props.score1}</td>
                         <td>{this.props.score2}</td>
-                        <td>{this.props.draw}</td>
+                        <td>{this.props.draws}</td>
                     </tr>
                     <tr class="green">
                         <td>{this.props.player2}</td>
                         <td>{this.props.score2}</td>
                         <td>{this.props.score1}</td>
-                        <td>{this.props.draw}</td>
+                        <td>{this.props.draws}</td>
                     </tr>
                 </tbody>
             </table>
