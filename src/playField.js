@@ -101,7 +101,7 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
     render(){
         return(
         <div>
-            <button id="resetBtn" type="button">Play again!</button>
+            <button id="resetBtn" type="button" onClick={() => this.resetGame()}> Play again!</button>
             <h1>Scoreboard:</h1>
             <table class="table scoreboard-table">
                 <tbody>
@@ -127,5 +127,10 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
             </table>
         </div>
         );
+    }
+    resetGame(){
+        
+        alert("The game will be reset now");
+
     }
 }
