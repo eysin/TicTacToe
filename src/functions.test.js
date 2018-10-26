@@ -1,5 +1,6 @@
 const winCheck = require('./functions');
 
+
 it('should return 1 on (x x x) in top row', () => {
     expect(winCheck([[1, 1, 1], [0, 0, 0], [0, 0, 0]])).toBe(1);
 })

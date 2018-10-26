@@ -1,4 +1,4 @@
-var tds = document.getElementsByTagName("td");
+
 
 
 
