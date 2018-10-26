@@ -40,7 +40,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
                                 {element === 0 ? <h1>empty</h1> : null}
                                 {element === 1 ? <h1>X</h1> : null}
                                 {element === 2 ? <h1>O</h1> : null}
-                            </td>
+                            </td>    
                         )}
                     </tr>
                     )}
@@ -51,8 +51,10 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     }
     handleClick(index1, index2){//Handles operation when an element in the table is clicked
         //To fetch the global variables in the state function, use this.state.{Name of variable}
-        //To update a variable in the state function, use thi.setstate({"Variable": "Value"})
-        alert(this.state.playField[index1][index2])
+        //To update a variable in the state function, use this.setstate({"Variable": "Value"})
+        //alert(this.state.playField[index1][index2])
+        alert(index1+ " " + index2)
+        this.setstate({"Variable": "X"})
     }
 
 }
@@ -72,6 +74,7 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
     render(){
         return(
         <div>
+            <button id="resetBtn" type="button">Play again!</button>
             <h1>Scoreboard:</h1>
             <table class="table scoreboard-table">
                 <tbody>
