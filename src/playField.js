@@ -52,7 +52,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     render(){//A table that will be stiled will handle the graphics part of the tic-tac-toe
         return (
         <div>
-            <table class=" col-md-12">
+            <table class="playfield col-md-12">
                 <tbody>
                     {this.state.playField.map((row, i1)=> 
                     <tr key={i1}>
@@ -92,6 +92,12 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         let tempGrid = this.state.playField;
         //The tempGrid is equals to the playField's [3][3] grid 
 
+<<<<<<< HEAD
+=======
+        /*if(win){
+
+        }*/
+>>>>>>> 32a4f6eed1e913dd3309ee59c7a9ade1c35de176
     }
 
 }
