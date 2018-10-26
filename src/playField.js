@@ -23,7 +23,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     constructor(props){
         super(props);
         this.state = {
-            playField: [[0, 1, 0], [0, 1, 0], [0, 2, 0]],
+            playField: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
             turn: true
         }
         this.handleClick = this.handleClick.bind(this);
@@ -37,7 +37,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
                     <tr>
                         {row.map((element, i2)=>
                             <td onClick={() => this.handleClick(i1, i2)}>
-                                {element === 0 ? <h1>empty</h1> : null}
+                                {element === 0 ? <h1></h1> : null}
                                 {element === 1 ? <h1>X</h1> : null}
                                 {element === 2 ? <h1>O</h1> : null}
                             </td>    
@@ -53,8 +53,17 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         //To fetch the global variables in the state function, use this.state.{Name of variable}
         //To update a variable in the state function, use this.setstate({"Variable": "Value"})
         //alert(this.state.playField[index1][index2])
-        alert(index1+ " " + index2)
-        this.setstate({"Variable": "X"})
+        if(this.state.playField[index1][index2] === 0){
+            let tempField = this.state.playField;
+            if(this.state.turn){
+                this.state.playField[index1][index2] = 1;
+            }
+            else{
+                this.state.playField[index1][index2] = 2;
+            }
+            this.setState({playField: tempField, turn: !this.state.turn});
+        }
+        
     }
 
 }
