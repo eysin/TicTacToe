@@ -52,9 +52,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     handleClick(index1, index2){//Handles operation when an element in the table is clicked
         //To fetch the global variables in the state function, use this.state.{Name of variable}
         //To update a variable in the state function, use this.setstate({"Variable": "Value"})
-        //alert(this.state.playField[index1][index2])
-        alert(index1+ " " + index2)
-        this.setstate({"Variable": "X"})
+        alert(this.state.playField[index1][index2])   
     }
 
 }
