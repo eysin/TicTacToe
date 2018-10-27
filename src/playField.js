@@ -81,7 +81,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
                     {this.state.playField.map((row, i1)=> 
                     <tr key={i1}>
                         {row.map((element, i2)=>
-                            <td onClick={() => this.handleClick(i1, i2)} key={i1.toString() + i2.toString()}>
+                            <td className="boardPiece" onClick={() => this.handleClick(i1, i2)} key={i1.toString() + i2.toString()}>
                                 {element === 0 ? <h1></h1> : null}
                                 {element === 1 ? <h1>X</h1> : null}
                                 {element === 2 ? <h1>O</h1> : null}
