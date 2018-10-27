@@ -20,7 +20,7 @@ export class PlayField extends React.Component{//The container class for the mai
     
     render(){
         return (
-        <div>
+        <div class="container">
             <div className="division col-md-12 col-sm-6">
             <div class="title">Tic Tac Toe</div>
                 <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn}/>
