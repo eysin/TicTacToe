@@ -27,7 +27,7 @@ export class PlayField extends React.Component{//The container class for the mai
         <div class="container">
             <div className="division col-md-12 col-sm-6">
             <div class="title">Tic Tac Toe</div>
-                <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn}/>
+                <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn} gameDone={this.state.gameDone} winner={this.state.winner}/>
             </div>
             <div className="division col-md-12 col-sm-6">
                 <TicTacToe key={this.state.redraw} finishGame={(winner)=> this.finishGame(winner)} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
@@ -35,25 +35,6 @@ export class PlayField extends React.Component{//The container class for the mai
             <div className="division col-md-12 col-sm-6">
                 <ScoreBoard resetGame={() => this.resetGame()} player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
             </div>
-            {this.state.gameDone ? 
-                <div>
-                    {this.state.winner === 1 ? 
-                    <div className="division col-md-12 alert alert-success">
-                         Game ended with <strong>{this.state.player1}</strong> Winning!
-                    </div>
-                    : null}
-                    {this.state.winner === 2 ? 
-                        <div className="division col-md-12 alert alert-success">
-                            Game ended with <strong>{this.state.player2}</strong> Winning!
-                        </div>
-                        : null}
-                    {this.state.winner === 0 ? 
-                        <div className="division col-md-12 alert alert-info">
-                            Game ended in a <strong>Draw!</strong>
-                        </div>
-                        : null}
-                </div>
-                : null}
             
         </div>);
     }
@@ -100,7 +81,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
                     {this.state.playField.map((row, i1)=> 
                     <tr key={i1}>
                         {row.map((element, i2)=>
-                            <td onClick={() => this.handleClick(i1, i2)} key={i1.toString() + i2.toString()}>
+                            <td className="boardPiece" onClick={() => this.handleClick(i1, i2)} key={i1.toString() + i2.toString()}>
                                 {element === 0 ? <h1></h1> : null}
                                 {element === 1 ? <h1>X</h1> : null}
                                 {element === 2 ? <h1>O</h1> : null}
@@ -157,8 +138,16 @@ class Players extends React.Component{
         return(
         <div>
             <div class="player blue">{this.props.player1} VS {this.props.player2}</div>
-            {this.props.turn === true ? <div class="turn green"> {this.props.player1}'s Turn!</div> : 
-                                        <div class="turn green"> {this.props.player2}'s Turn!</div>}
+            {!this.props.gameDone ? 
+                <div>{this.props.turn === true ? 
+                    <div class="turn green"> {this.props.player1}'s Turn!</div> : 
+                    <div className="turn green"> {this.props.player2}'s Turn!</div>}
+                </div>:
+                    <div className="turn green">
+                        {this.props.winner === 0 ? <div>Game ended with a draw!</div>: null}
+                        {this.props.winner === 1 ? <div>{this.props.player1}'s won the game!</div>: null}
+                        {this.props.winner === 2 ? <div>{this.props.player2}'s won the game!</div>: null}
+                    </div>}
         </div>
         );
     }
