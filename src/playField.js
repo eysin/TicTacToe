@@ -12,9 +12,11 @@ export class PlayField extends React.Component{//The container class for the mai
                       score1: 0,
                       score2: 0,
                       draws: 0,
-                      winner: 0};
+                      winner: 0,
+                      redraw: false};
         this.finishGame = this.finishGame.bind(this);
         this.changeTurn = this.changeTurn.bind(this);
+        this.resetGame = this.resetGame.bind(this);
         
     }
     
@@ -26,10 +28,10 @@ export class PlayField extends React.Component{//The container class for the mai
                 <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
-                <TicTacToe finishGame={()=> this.finishGame()} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
+                <TicTacToe key={this.state.redraw} finishGame={()=> this.finishGame()} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
-                <ScoreBoard player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
+                <ScoreBoard resetGame={() => this.resetGame} player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
             </div>
         </div>);
     }
@@ -37,18 +39,23 @@ export class PlayField extends React.Component{//The container class for the mai
         this.setState({turn: !this.state.turn});
     }
     finishGame(winner){
-        if(winner == 0)
+        alert(winner);
+        if(winner === 0)
         {
             this.setState({draws: this.state.draws + 1});
         }
-        if(winner == 1)
+        else if(winner === 1)
         {
             this.setState({score1: this.state.score1 + 1});
-        }else{
+        }
+        else{
             this.setState({score2: this.state.score2 + 1});
         }
-        var tds = document.getElementsByTagName("ResetBtn");
+        this.resetGame();
 
+    }
+    resetGame(){
+        this.setState({turn: true, redraw: !this.state.redraw});
     }
 }
 
@@ -111,7 +118,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         var winner = winCheck(tempGrid); 
         
         if(winner != 0)
-        {   
+        {  
             this.props.finishGame(winner);
         }
         if(this.state.turnCount == 8)
@@ -165,8 +172,7 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
         );
     }
     resetGame(){
-        
-        alert("The game will be reset now");
+        this.props.resetGame();
 
     }
 }
