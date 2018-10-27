@@ -7,8 +7,8 @@ export class PlayField extends React.Component{//The container class for the mai
     constructor(props){
         super(props);
         this.state = {turn: true,
-                      player1: "TempName1",
-                      player2: "TempName2",
+                      player1: this.props.player1,
+                      player2: this.props.player2,
                       score1: 0,
                       score2: 0,
                       draws: 0,
@@ -108,9 +108,6 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     checkWin(){
         let tempGrid = this.state.playField;
         //The tempGrid is equals to the playField's [3][3] grid 
-<<<<<<< HEAD
-
-=======
         var winner = winCheck(tempGrid); 
         
         if(winner != 0)
@@ -121,7 +118,6 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         {
             this.props.finishGame(winner); //0 implies a draw
         }
->>>>>>> b6656950b9f5fa12dd557a54c5a2c89f00f5aeba
     }
 }
 
