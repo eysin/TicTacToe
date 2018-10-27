@@ -1,3 +1,8 @@
+
+
+
+
+
 //checks if winner is found, if so, return player id (1 for x, 2 for o)
 //else returns 0
 function winCheck(grid)
