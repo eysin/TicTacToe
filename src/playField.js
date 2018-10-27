@@ -13,7 +13,8 @@ export class PlayField extends React.Component{//The container class for the mai
                       score2: 0,
                       draws: 0,
                       winner: 0,
-                      redraw: false};
+                      redraw: false,
+                      gameDone: false};
         this.finishGame = this.finishGame.bind(this);
         this.changeTurn = this.changeTurn.bind(this);
         this.resetGame = this.resetGame.bind(this);
@@ -21,6 +22,7 @@ export class PlayField extends React.Component{//The container class for the mai
     }
     
     render(){
+        console.log(this.state)
         return (
         <div class="container">
             <div class="title">Tic Tac Toe</div>
@@ -28,34 +30,52 @@ export class PlayField extends React.Component{//The container class for the mai
                 <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
-                <TicTacToe key={this.state.redraw} finishGame={()=> this.finishGame()} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
+                <TicTacToe key={this.state.redraw} finishGame={(winner)=> this.finishGame(winner)} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
             </div>
             <div className="division col-md-12 col-sm-6">
-                <ScoreBoard resetGame={() => this.resetGame} player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
+                <ScoreBoard resetGame={() => this.resetGame()} player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
             </div>
+            {this.state.gameDone ? 
+                <div>
+                    {this.state.winner === 1 ? 
+                    <div className="division col-md-12 alert alert-success">
+                         Game ended with <strong>{this.state.player1}</strong> Winning!
+                    </div>
+                    : null}
+                    {this.state.winner === 2 ? 
+                        <div className="division col-md-12 alert alert-success">
+                            Game ended with <strong>{this.state.player2}</strong> Winning!
+                        </div>
+                        : null}
+                    {this.state.winner === 0 ? 
+                        <div className="division col-md-12 alert alert-info">
+                            Game ended in a <strong>Draw!</strong>
+                        </div>
+                        : null}
+                </div>
+                : null}
+            
         </div>);
     }
     changeTurn(){
         this.setState({turn: !this.state.turn});
     }
     finishGame(winner){
-        alert(winner);
         if(winner === 0)
         {
-            this.setState({draws: this.state.draws + 1});
+            this.setState({draws: this.state.draws + 1, winner: winner, gameDone: true});
         }
         else if(winner === 1)
         {
-            this.setState({score1: this.state.score1 + 1});
+            this.setState({score1: this.state.score1 + 1, winner: winner, gameDone: true});
         }
         else{
-            this.setState({score2: this.state.score2 + 1});
+            this.setState({score2: this.state.score2 + 1, winner: winner, gameDone: true});
         }
-        this.resetGame();
 
     }
     resetGame(){
-        this.setState({turn: true, redraw: !this.state.redraw});
+        this.setState({turn: true, redraw: !this.state.redraw, gameDone: false});
     }
 }
 
@@ -97,19 +117,22 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         //To fetch the global variables in the state function, use this.state.{Name of variable}
         //To update a variable in the state function, use this.setstate({"Variable": "Value"})
         //alert(this.state.playField[index1][index2])
-        if(this.state.playField[index1][index2] === 0){
-            let tempField = this.state.playField;
-            if(this.props.turn){
-                this.state.playField[index1][index2] = 1;
-            }
-            else{
-                this.state.playField[index1][index2] = 2;
-            }
-            this.setState({playField: tempField, turnCount: this.state.turnCount+1});
-            this.props.changeTurn();
-            this.checkWin();
-            //alert(this.state.turnCount);
-        }   
+        if(!this.state.gameOver){
+            if(this.state.playField[index1][index2] === 0){
+                let tempField = this.state.playField;
+                if(this.props.turn){
+                    this.state.playField[index1][index2] = 1;
+                }
+                else{
+                    this.state.playField[index1][index2] = 2;
+                }
+                this.setState({playField: tempField, turnCount: this.state.turnCount+1});
+                this.props.changeTurn();
+                this.checkWin();
+                //alert(this.state.turnCount);
+            } 
+        }
+          
         
     }
     checkWin(){
@@ -120,8 +143,9 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
         if(winner != 0)
         {  
             this.props.finishGame(winner);
+            this.setState({gameOver: true});
         }
-        if(this.state.turnCount == 8)
+        else if(this.state.turnCount == 8)
         {
             this.props.finishGame(winner); //0 implies a draw
         }
