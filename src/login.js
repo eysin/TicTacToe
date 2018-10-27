@@ -10,20 +10,24 @@ export class Login extends React.Component{
     }
     render(){
         return (
-            <div>
-                <div className="col-md-5" />
-                <div className="col-md-7">
+            <body>
+                <div class="container login"> 
                     <div className="col-md-12">
-                        <input type="text" className="col-md-2" placeholder="Player1" name="player1" onChange={this.handleChange} value={this.state.player1} />
-                    </div>
-                    <div className="col-md-12">
-                        <input type="text" className="col-md-2" placeholder="Player2" name="player2" onChange={this.handleChange} value={this.state.player2}/>
-                    </div>
-                    <div className="col-md-12">                
-                        <input type="button" className="btn btn-success col-md-1" value="Submit" onClick={this.handleSubmit}/>
+                        <div class="title">Welcome to Tic Tac Toe:</div>
+                        <div className="col-md-12">
+                            <label>Name for Player 1:</label>
+                            <input type="text" class="inputtext" placeholder="Player1" name="player1" onChange={this.handleChange} value={this.state.player1} />
+                        </div>
+                        <div className="col-md-12">
+                            <label>Name for Player 2:</label>
+                            <input type="text" class="inputtext" placeholder="Player2" name="player2" onChange={this.handleChange} value={this.state.player2}/>
+                        </div>
+                        <div className="col-md-12">                
+                            <input type="button" className="btn loginbtn col-md-1" value="Submit" onClick={this.handleSubmit}/>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </body>
         );
     }
     handleChange(e){

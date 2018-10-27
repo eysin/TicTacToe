@@ -10,11 +10,30 @@ body{
     padding: 10px;
     width: 500px;
 }
+.login{
+    border:2px dashed black;
+}
+label{
+    font-weight: normal;
+}
+.inputtext{
+    margin:15px 10px;
+}
+.loginbtn{
+    width:150px;
+    float:right;
+    margin-right:10px;
+    background-color:#212121;
+    color:#E5E5E5;
+    font-size:20px;
+}
 .division{
     margin-bottom:30px;
 }
 .title{
     font-size:36px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 .blue{
     background-color:#B3DEE8;
