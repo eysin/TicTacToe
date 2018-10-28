@@ -8,7 +8,7 @@ body{
 .container{
     margin: auto;
     padding: 10px;
-    width: 500px;
+    width: 700px;
 }
 .login{
     border:2px dashed black;
@@ -94,3 +94,33 @@ td:last-child{
     user-select: none;
     background-color: beige;
 }
+.docMenu{
+    margin:0;
+    padding:0;
+    height:100px;
+    background-color:#B3DEE8;
+}
+.docMenu ul{
+    height:100%;
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+}
+.docMenu ul li{
+    height:100px;
+    padding-top:15px;
+    padding-left:15px;
+    float:left;
+    list-style: none;
+    color:#212121;
+}
+.docMenu ul a{
+    border-right:1px solid black;
+    border-left:1px solid black;
+    text-decoration: none;
+}
+.docMenu a:hover{
+    background-color:#B3E8D1;
+    text-decoration: none;
+}
+
