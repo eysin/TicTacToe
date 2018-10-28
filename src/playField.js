@@ -195,11 +195,12 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
         );
     }
     newGame(){
-    
+        window.localStorage.clear();
+        window.location.reload(true);
     }
     resetGame(){
         this.props.resetGame();
-
+        
     }    
 }
 
