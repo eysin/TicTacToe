@@ -1,7 +1,8 @@
 #Administration manual 
-
+![Reykjavik University Logo](http://www.ru.is/media/HR_logo_vinstri_transparent.png)
 ##### Late Term Assignment - Hugbúnaðarfræði 2018
- 
+Authors : Sofia Basilio, Rolandas Mineika, Jakob Guðnason, Axel Þórisson, Eyþór Hafliðason 
+
 Our project is hosted on an Azure Cloud machine, with Jenkins built into it for continuous integration.  
 Setup for that environment is done through the following steps: 
  

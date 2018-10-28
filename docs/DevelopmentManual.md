@@ -1,6 +1,7 @@
 #Development Manual 
-
+![Reykjavik University Logo](http://www.ru.is/media/HR_logo_vinstri_transparent.png)
 ##### Late Term Assignment - Hugbúnaðarfræði 2018
+Authors : Sofia Basilio, Rolandas Mineika, Jakob Guðnason, Axel Þórisson, Eyþór Hafliðason 
 
 The TicTacToe project is stored in GitHub under the git repository https://github.com/eysin/TicTacToe. 
 In order to fetch the source code from the repository, you have two options: 
