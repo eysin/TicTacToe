@@ -114,11 +114,13 @@ td:last-child{
     list-style: none;
     color:#212121;
 }
-.docMenu ul li a{
-    border:1px solid white;
+.docMenu ul a{
+    border-right:1px solid black;
+    border-left:1px solid black;
     text-decoration: none;
 }
 .docMenu a:hover{
     background-color:#B3E8D1;
     text-decoration: none;
 }
+
