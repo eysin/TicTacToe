@@ -165,7 +165,7 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
         return(
         <div>
             <button id="resetBtn" type="button" onClick={() => this.resetGame()}> Play again!</button>
-            <button id="resetBtn" type="button" onClick={() => this.newGame()}> Reset Game, pick new usernames'n shit</button>
+            <button id="newUser" type="button" onClick={() => this.newGame()}> Pick new users</button>
             
             <h1>Scoreboard:</h1>
             <table className="table scoreboard-table">
