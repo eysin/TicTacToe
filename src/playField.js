@@ -195,16 +195,16 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
 class Documentation extends React.Component{//Keeps track of the Scoreboard</div>
     render(){
         return(
-        <div class="docMenu">
-             <ul>
-                <li><a href="#">Design Report</a></li>
-                <li><a href="#">Developmnt Manual</a></li>
-                <li><a href="#">Administration Manual</a></li>
-            </ul> 
-
+        <div>
+            <label>Project Documentation:</label>
+            <div class="docMenu">
+                <ul>
+                    <li class="col-sm-12 col-md-4"><a href="#">Design Report</a></li>
+                    <li class="col-sm-12 col-md-4"><a href="#">Development Manual</a></li>
+                    <li class="col-sm-12 col-md-4"><a href="#">Administration Manual</a></li>
+                </ul> 
+            </div>
         </div>
-
-
         );
     }
 }
