@@ -199,9 +199,9 @@ class Documentation extends React.Component{//Keeps track of the Scoreboard</div
             <label>Project Documentation:</label>
             <div class="docMenu">
                 <ul>
-                    <li class="col-sm-12 col-md-4"><a href="#">Design Report</a></li>
-                    <li class="col-sm-12 col-md-4"><a href="#">Development Manual</a></li>
-                    <li class="col-sm-12 col-md-4"><a href="#">Administration Manual</a></li>
+                    <a href="#" class="col-sm-12 col-md-4"><li>Design Report</li></a>
+                    <a href="#" class="col-sm-12 col-md-4"><li>Development Manual</li></a>
+                    <a href="#" class="col-sm-12 col-md-4"><li>Administration Manual</li></a>
                 </ul> 
             </div>
         </div>

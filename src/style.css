@@ -98,7 +98,7 @@ td:last-child{
     margin:0;
     padding:0;
     height:100px;
-    background-color:#212121;
+    background-color:#B3DEE8;
 }
 .docMenu ul{
     height:100%;
@@ -107,10 +107,18 @@ td:last-child{
     list-style-type: none;
 }
 .docMenu ul li{
-    border:1px solid #D1D1D1;
     height:100px;
     padding-top:15px;
+    padding-left:15px;
     float:left;
     list-style: none;
-} 
-
+    color:#212121;
+}
+.docMenu ul li a{
+    border:1px solid white;
+    text-decoration: none;
+}
+.docMenu a:hover{
+    background-color:#B3E8D1;
+    text-decoration: none;
+}
