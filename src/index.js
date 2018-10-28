@@ -17,7 +17,7 @@ class Index extends React.Component{
         this.handleUsername = this.handleUsername.bind(this);
     }
     componentDidMount(){
-        if(window.localStorage.length !== 0){
+        if(window.localStorage.getItem('userData')){
             let tempData = JSON.parse(window.localStorage.getItem('userData'));
             tempData.turn = true;
             tempData.winner = 0;
