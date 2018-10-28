@@ -25,20 +25,16 @@ export class PlayField extends React.Component{//The container class for the mai
         console.log(this.state)
         return (
         <div class="container">
-            <div className="division col-md-12 col-sm-6">
-            <div class="title">Tic Tac Toe</div>
+            <div className="division col-md-12">
+            <div class="title col-sm-12">Tic Tac Toe</div>
                 <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn} gameDone={this.state.gameDone} winner={this.state.winner}/>
             </div>
-            <div className="division col-md-12 col-sm-6">
+            <div className="division col-md-12">
                 <TicTacToe key={this.state.redraw} finishGame={(winner)=> this.finishGame(winner)} changeTurn={() => this.changeTurn()} turn={this.state.turn}/>
             </div>
-            <div className="division col-md-12 col-sm-6">
+            <div className="division col-md-12">
                 <ScoreBoard resetGame={() => this.resetGame()} player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
             </div>
-            <div className="division col-md-12">
-                <Documentation/>
-            </div>
-            
         </div>);
     }
     changeTurn(){
@@ -140,13 +136,13 @@ class Players extends React.Component{
     render(){
         return(
         <div>
-            <div class="player blue">{this.props.player1} VS {this.props.player2}</div>
+            <div class="player blue col-sm-6">{this.props.player1} VS {this.props.player2}</div>
             {!this.props.gameDone ? 
                 <div>{this.props.turn === true ? 
-                    <div class="turn green"> {this.props.player1}'s Turn!</div> : 
-                    <div className="turn green"> {this.props.player2}'s Turn!</div>}
+                    <div class="turn green col-sm-6"> {this.props.player1}'s Turn!</div> : 
+                    <div className="turn green col-sm-6 "> {this.props.player2}'s Turn!</div>}
                 </div>:
-                    <div className="turn green">
+                    <div className="turn green col-sm-6">
                         {this.props.winner === 0 ? <div>Game ended with a draw!</div>: null}
                         {this.props.winner === 1 ? <div>{this.props.player1}'s won the game!</div>: null}
                         {this.props.winner === 2 ? <div>{this.props.player2}'s won the game!</div>: null}
@@ -184,6 +180,7 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
                     </tr>
                 </tbody>
             </table>
+            <h1><b>Made By</b> Sofia Basilio, Rolandas Mineika, Jakob Guðnason, Axel Þórisson, Eyþór Hafliðason</h1>
         </div>
         );
     }
@@ -191,20 +188,4 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
         this.props.resetGame();
 
     }    
-}
-class Documentation extends React.Component{//Keeps track of the Scoreboard</div>
-    render(){
-        return(
-        <div>
-            <label>Project Documentation:</label>
-            <div class="docMenu">
-                <ul>
-                    <a href="#" class="col-sm-12 col-md-4"><li>Design Report</li></a>
-                    <a href="#" class="col-sm-12 col-md-4"><li>Development Manual</li></a>
-                    <a href="#" class="col-sm-12 col-md-4"><li>Administration Manual</li></a>
-                </ul> 
-            </div>
-        </div>
-        );
-    }
 }
