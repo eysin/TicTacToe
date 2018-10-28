@@ -35,6 +35,9 @@ export class PlayField extends React.Component{//The container class for the mai
             <div className="division col-md-12 col-sm-6">
                 <ScoreBoard resetGame={() => this.resetGame()} player1={this.state.player1} player2={this.state.player2} score1={this.state.score1} score2={this.state.score2} draws={this.state.draws}/>
             </div>
+            <div className="division col-md-12">
+                <Documentation/>
+            </div>
             
         </div>);
     }
@@ -187,5 +190,21 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
     resetGame(){
         this.props.resetGame();
 
+    }    
+}
+class Documentation extends React.Component{//Keeps track of the Scoreboard</div>
+    render(){
+        return(
+        <div class="docMenu">
+             <ul>
+                <li><a href="#">Design Report</a></li>
+                <li><a href="#">Developmnt Manual</a></li>
+                <li><a href="#">Administration Manual</a></li>
+            </ul> 
+
+        </div>
+
+
+        );
     }
 }
