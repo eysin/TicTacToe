@@ -18,6 +18,7 @@ The rest of the classes that we created will be described in the chapter Style.c
 The first prototype is usually drawn in a primitive way, using sticky nots or simply drawn on paper. This was the following result of the first prototype:
 
 Prototype for the assignment of the players:
+
 ![First Prototype Login](../docs/img/login1.png)
 
 Prototype revolving on the elements of the Tic Tac Toe interface.
@@ -43,9 +44,9 @@ The prototype below is for the playfield of Tic Tac Toe:
 
 This is the product of the programmed web page using the previous designs.
 
-![Final Prototype Login](../docs/img/login3.png)]
+![Final Prototype Login](../docs/img/login3.png)
 
-![Final Prototype Login](../docs/img/interface3.png)]
+![Final Prototype Login](../docs/img/interface3.png)
 
 #### Style.css
 
