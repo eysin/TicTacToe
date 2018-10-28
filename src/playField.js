@@ -6,7 +6,11 @@ let turn = true;
 export class PlayField extends React.Component{//The container class for the main display of the website
     constructor(props){
         super(props);
-        this.state = {turn: true,
+        if(this.props.userData !== null){
+            this.state = this.props.userData;
+        }
+        else{
+            this.state = {turn: true,
                       player1: this.props.player1,
                       player2: this.props.player2,
                       score1: 0,
@@ -15,18 +19,22 @@ export class PlayField extends React.Component{//The container class for the mai
                       winner: 0,
                       redraw: false,
                       gameDone: false};
+        }
+        
+        
         this.finishGame = this.finishGame.bind(this);
         this.changeTurn = this.changeTurn.bind(this);
         this.resetGame = this.resetGame.bind(this);
         
     }
-    
+    componentDidUpdate(){
+        window.localStorage.setItem('userData', JSON.stringify(this.state));
+    }
     render(){
-        console.log(this.state)
         return (
-        <div class="container">
+        <div className="container">
             <div className="division col-md-12">
-            <div class="title col-sm-12">Tic Tac Toe</div>
+            <div className="title col-sm-12">Tic Tac Toe</div>
                 <Players player1={this.state.player1} player2={this.state.player2} turn={this.state.turn} gameDone={this.state.gameDone} winner={this.state.winner}/>
             </div>
             <div className="division col-md-12">
@@ -75,7 +83,7 @@ class TicTacToe extends React.Component{//The container class for the Tic-Tac-To
     render(){//A table that will be stiled will handle the graphics part of the tic-tac-toe
         return (
         <div>
-            <table class="playfield col-md-12">
+            <table className="playfield col-md-12">
                 <tbody>
                     {this.state.playField.map((row, i1)=> 
                     <tr key={i1}>
@@ -136,10 +144,10 @@ class Players extends React.Component{
     render(){
         return(
         <div>
-            <div class="player blue col-sm-6">{this.props.player1} VS {this.props.player2}</div>
+            <div className="player blue col-sm-6">{this.props.player1} VS {this.props.player2}</div>
             {!this.props.gameDone ? 
                 <div>{this.props.turn === true ? 
-                    <div class="turn green col-sm-6"> {this.props.player1}'s Turn!</div> : 
+                    <div className="turn green col-sm-6"> {this.props.player1}'s Turn!</div> : 
                     <div className="turn green col-sm-6 "> {this.props.player2}'s Turn!</div>}
                 </div>:
                     <div className="turn green col-sm-6">
@@ -157,8 +165,9 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
         return(
         <div>
             <button id="resetBtn" type="button" onClick={() => this.resetGame()}> Play again!</button>
+            
             <h1>Scoreboard:</h1>
-            <table class="table scoreboard-table">
+            <table className="table scoreboard-table">
                 <tbody>
                     <tr>
                         <td>Name</td>
@@ -166,13 +175,13 @@ class ScoreBoard extends React.Component{//Keeps track of the Scoreboard
                         <td>Losses</td>
                         <td>Draws</td>
                     </tr>
-                    <tr class="blue">
+                    <tr className="blue">
                         <td>{this.props.player1}</td>
                         <td>{this.props.score1}</td>
                         <td>{this.props.score2}</td>
                         <td>{this.props.draws}</td>
                     </tr>
-                    <tr class="green">
+                    <tr className="green">
                         <td>{this.props.player2}</td>
                         <td>{this.props.score2}</td>
                         <td>{this.props.score1}</td>
