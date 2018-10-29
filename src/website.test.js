@@ -29,8 +29,17 @@ it('should know which players turn it is', async () => {
 it('should know which players turn it is after the first player finishes their turn', async () => {
     await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(1)');
     const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);
+    expect(text).toContain(player2);
+});
+it('should update score once game is over', async () => {
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(2) > td:nth-child(1)');
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(2)');
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(2) > td:nth-child(2)');
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(3)');
+    //await page.screenshot({ path: 'Testing.png' }); //testing string, please ignore
+    const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);
     await page.close();
     await browser.close();
-    expect(text).toContain(player2);
+    expect(text).toContain(player1+"'s won the game!");
 });
 
