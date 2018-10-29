@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-
+jest.setTimeout(30000);
 var browser; 
 var page;
 var player1 = 'Steve';
