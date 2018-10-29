@@ -2,6 +2,8 @@ const puppeteer = require('puppeteer');
 
 var browser; 
 var page;
+var player1 = 'Steve';
+var player2 = 'Bob';
 it('should render without crashing', async () => { 
     browser = await puppeteer.launch(); 
     page = await browser.newPage();
@@ -11,14 +13,24 @@ it('should render without crashing', async () => {
 });
 
 it('should start game with input names', async () => {
-    await page.focus('body > div > div > div:nth-child(2) > input');
-    await page.keyboard.type("Steve");
-    await page.focus('body > div > div > div:nth-child(3) > input');
-    await page.keyboard.type("Bob");
-    await page.click('body > div > div > div:nth-child(4) > input');
-    //await page.screenshot({ path: 'Testing.png' });
+    
+    await page.focus('body > div > div > div > div > div:nth-child(2) > input');
+    await page.keyboard.type(player1);
+    await page.focus('body > div > div > div > div > div:nth-child(3) > input');
+    await page.keyboard.type(player2);
+    await page.click('body > div > div > div > div > div:nth-child(4) > input');
     const text = await page.evaluate(() => document.querySelector('.player.blue').textContent);
+    expect(text).toContain(player1, player2);
+});
+it('should know which players turn it is', async () => {
+    const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);
+    expect(text).toContain(player1);
+});
+it('should know which players turn it is after the first player finishes their turn', async () => {
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(1)');
+    const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);
     await page.close();
     await browser.close();
-    expect(text).toContain('Steve', 'Bob');
+    expect(text).toContain(player2);
 });
+
