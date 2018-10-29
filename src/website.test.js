@@ -29,8 +29,21 @@ it('should know which players turn it is', async () => {
 it('should know which players turn it is after the first player finishes their turn', async () => {
     await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(1)');
     const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);
+    expect(text).toContain(player2);
+});
+it('should display who won the game', async () => {
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(2) > td:nth-child(1)');
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(2)');
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(2) > td:nth-child(2)');
+    await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(3)');
+    const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);
+    expect(text).toContain(player1+"'s won the game!");
+});
+it('should reset game once "play again!" button is pushed', async () => {
+    await page.click('#resetBtn');
+    const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);  
     await page.close();
     await browser.close();
-    expect(text).toContain(player2);
+    expect(text).toContain(player1);
 });
 
