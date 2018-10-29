@@ -31,7 +31,7 @@ it('should know which players turn it is after the first player finishes their t
     const text = await page.evaluate(() => document.querySelector('.turn.green').textContent);
     expect(text).toContain(player2);
 });
-it('should update score once game is over', async () => {
+it('should display who won the game', async () => {
     await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(2) > td:nth-child(1)');
     await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(2)');
     await page.click('#root > div > div:nth-child(2) > div > table > tbody > tr:nth-child(2) > td:nth-child(2)');
