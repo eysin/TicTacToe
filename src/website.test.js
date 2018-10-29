@@ -13,11 +13,12 @@ it('should render without crashing', async () => {
 });
 
 it('should start game with input names', async () => {
-    await page.focus('body > div > div > div:nth-child(2) > input');
+    
+    await page.focus('body > div > div > div > div > div:nth-child(2) > input');
     await page.keyboard.type(player1);
-    await page.focus('body > div > div > div:nth-child(3) > input');
+    await page.focus('body > div > div > div > div > div:nth-child(3) > input');
     await page.keyboard.type(player2);
-    await page.click('body > div > div > div:nth-child(4) > input');
+    await page.click('body > div > div > div > div > div:nth-child(4) > input');
     const text = await page.evaluate(() => document.querySelector('.player.blue').textContent);
     expect(text).toContain(player1, player2);
 });
@@ -32,3 +33,4 @@ it('should know which players turn it is after the first player finishes their t
     await browser.close();
     expect(text).toContain(player2);
 });
+
